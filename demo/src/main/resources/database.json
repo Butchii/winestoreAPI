@@ -1,0 +1,8 @@
+[{
+  "name" : "Rotwein",
+  "capacity" : "0.75",
+  "type": "Rot",
+  "cost" : "5",
+  "year": "2023",
+  "imageUrl": "default"
+}]
