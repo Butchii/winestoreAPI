@@ -5,18 +5,25 @@ public class Product {
     private String capacity;
     private String type;
 
-    private String cost;
+    private String style;
+
+    private String discount;
+    private String price;
 
     private String year;
 
     private String imageUrl;
 
-    public Product(String name, String capacity, String type, String cost, String year) {
+
+    public Product(String name, String capacity, String style, String discount, String type, String price, String year) {
         this.name = name;
         this.capacity = capacity;
+        this.style = style;
+        this.discount = discount;
         this.type = type;
-        this.cost = cost;
+        this.price = price;
         this.year = year;
+        this.imageUrl = "default";
     }
 
     public String getName() {
@@ -43,16 +50,24 @@ public class Product {
         this.type = type;
     }
 
-    public String getCost() {
-        return cost;
+    public String getPrice() {
+        return price;
     }
 
-    public void setCost(String cost) {
-        this.cost = cost;
+    public void setPrice(String cost) {
+        this.price = price;
     }
 
     public String getYear() {
         return year;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
     }
 
     public void setYear(String year) {
@@ -67,6 +82,12 @@ public class Product {
         this.imageUrl = imageUrl;
     }
 
+    public String getDiscount() {
+        return discount;
+    }
 
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }
 
 }

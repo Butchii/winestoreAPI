@@ -2,18 +2,12 @@ package com.example.demo.api.controller;
 
 import com.example.demo.api.model.Product;
 import com.example.demo.service.ProductService;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Optional;
 
 @RestController
 public class ProductController {
@@ -29,4 +23,16 @@ public class ProductController {
     public ArrayList<Product> getProduct(){
         return productService.getProducts();
     }
+
+    @GetMapping("/product")
+    public ArrayList<Product> getProductsBySearchValue(@RequestParam String value) throws IOException {
+        return productService.getProductsBySearchValue(value);
+    }
+
+    @GetMapping("/get-text")
+    public String getText(){
+        return "hello-woprld";
+    }
 }
+
+

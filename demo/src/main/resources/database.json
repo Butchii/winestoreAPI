@@ -1,8 +1,62 @@
-[{
-  "name" : "Rotwein",
-  "capacity" : "0.75",
-  "type": "Rot",
-  "cost" : "5",
-  "year": "2023",
-  "imageUrl": "default"
-}]
+[
+  {
+    "name": "Dagernova CasAHRnova Rotwein Qualitaetswein trocken 2021",
+    "capacity": "0.75",
+    "type": "Rotwein",
+    "style": "trocken",
+    "discount": "1",
+    "price": "7,80",
+    "year": "2021",
+    "imageUrl": "default"
+  },
+  {
+    "name": "Handschrift Spaetburgunder Blanc de Noir  trocken 2022",
+    "capacity": "0.75",
+    "type": "Weisswein",
+    "style": "trocken",
+    "discount": "1",
+    "price": "8,80",
+    "year": "2022",
+    "imageUrl": "default"
+  },
+  {
+    "name": "Dagernova Rivaner Qualitaetswein feinherb Basis feinherb 2022",
+    "capacity": "0.75",
+    "type": "Weisswein",
+    "style": "trocken",
+    "discount": "0.8",
+    "price": "6,90",
+    "year": "2022",
+    "imageUrl": "default"
+  },
+  {
+    "name": "Dagernova Blanc de Noir Qualitaetswein feinherb 2022",
+    "capacity": "0.75",
+    "type": "Weisswein",
+    "style": "feinherb",
+    "discount": "1",
+    "price": "7,80",
+    "year": "2022",
+    "imageUrl": "default"
+  },
+  {
+    "name": "Dagernova Portugieser Qualitaetswein Basis trocken 2022",
+    "capacity": "0.75",
+    "type": "Rotwein",
+    "style": "trocken",
+    "discount": "1",
+    "price": "7,80",
+    "year": "2022",
+    "imageUrl": "default"
+  },
+  {
+    "name": "Handschrift Domina Qualitaetswein halbtrocken 2021",
+    "capacity": "0.75",
+    "type": "Rotwein",
+    "style": "halbtrocken",
+    "discount": "1",
+    "price": "9,20",
+    "year": "2021",
+    "imageUrl": "default"
+  }
+]

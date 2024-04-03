@@ -24,16 +24,38 @@ public class ProductService {
 
         for (int i = 0; i < productArray.length(); i++) {
             JSONObject productObject = productArray.getJSONObject(i);
-            String productName =(String) productObject.get("name");
+            String productName = (String) productObject.get("name");
             String productCapacity = (String) productObject.get("capacity");
+            String productStyle = (String) productObject.get("style");
+            String productDiscount = (String) productObject.get("discount");
             String productType = (String) productObject.get("type");
-            String productCost = (String) productObject.get("cost");
+            String productCost = (String) productObject.get("price");
             String productYear = (String) productObject.get("year");
 
-            Product newProduct = new Product(productName, productCapacity, productType, productCost, productYear);
+            Product newProduct = new Product(productName, productCapacity, productStyle, productDiscount, productType, productCost, productYear);
             productList.add(newProduct);
         }
-        System.out.print(productList);
+    }
+
+    public ArrayList<Product> getProductsBySearchValue(String value) throws IOException {
+        productList.clear();
+
+        JSONArray productArray = getJsonArray();
+        for (int i = 0; i < productArray.length(); i++) {
+            JSONObject productObject = productArray.getJSONObject(i);
+            String productType = (String) productObject.get("type");
+            String productName = (String) productObject.get("name");
+            String productCapacity = (String) productObject.get("capacity");
+            String productStyle = (String) productObject.get("style");
+            String productDiscount = (String) productObject.get("discount");
+            String productCost = (String) productObject.get("price");
+            String productYear = (String) productObject.get("year");
+            if (productName.contains(value) || productType.contains(value)){
+                Product newProduct = new Product(productName, productCapacity, productStyle, productDiscount, productType, productCost, productYear);
+                productList.add(newProduct);
+            }
+        }
+        return productList;
     }
 
     private static JSONArray getJsonArray() throws IOException, JSONException {
@@ -42,7 +64,7 @@ public class ProductService {
         InputStream stream = new FileInputStream(newFile);
 
         BufferedReader bR = new BufferedReader(new InputStreamReader(stream));
-        String line = "";
+        String line;
         StringBuilder responseStrBuilder = new StringBuilder();
         while ((line = bR.readLine()) != null) {
             responseStrBuilder.append(line);
