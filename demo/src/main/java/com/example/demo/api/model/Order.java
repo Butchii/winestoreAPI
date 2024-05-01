@@ -3,13 +3,15 @@ package com.example.demo.api.model;
 import java.util.ArrayList;
 
 public class Order {
+    private String orderID;
     private String createdOn;
     private String shippedOn;
     private String shippingAddress;
     private String customerName;
     private ArrayList<Product> orderedProducts;
 
-    public Order(String createdOn, String shippedOn, String shippingAddress, String customerName, ArrayList<Product> orderedProducts) {
+    public Order(String orderID, String createdOn, String shippedOn, String shippingAddress, String customerName, ArrayList<Product> orderedProducts) {
+        this.orderID = orderID;
         this.createdOn = createdOn;
         this.shippedOn = shippedOn;
         this.customerName = customerName;
