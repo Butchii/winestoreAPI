@@ -4,16 +4,11 @@ public class Product {
     private String name;
     private String capacity;
     private String type;
-
     private String style;
-
     private String discount;
     private String price;
-
     private String year;
-
     private String imageUrl;
-
 
     public Product(String name, String capacity, String style, String discount, String type, String price, String year) {
         this.name = name;

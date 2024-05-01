@@ -16,10 +16,10 @@ public class ProductService {
 
     public ProductService() throws IOException, JSONException {
         productList = new ArrayList<>();
-        loadProductDatabase();
+        loadProducts();
     }
 
-    private void loadProductDatabase() throws IOException, JSONException {
+    private void loadProducts() throws IOException, JSONException {
         JSONArray productArray = getJsonArray();
 
         for (int i = 0; i < productArray.length(); i++) {
@@ -29,16 +29,15 @@ public class ProductService {
             String productStyle = (String) productObject.get("style");
             String productDiscount = (String) productObject.get("discount");
             String productType = (String) productObject.get("type");
-            String productCost = (String) productObject.get("price");
+            String productPrice = (String) productObject.get("price");
             String productYear = (String) productObject.get("year");
 
-            Product newProduct = new Product(productName, productCapacity, productStyle, productDiscount, productType, productCost, productYear);
+            Product newProduct = new Product(productName, productCapacity, productStyle, productDiscount, productType, productPrice, productYear);
             productList.add(newProduct);
         }
     }
 
-    public ArrayList<Product> getProductsBySearchValue(String value) throws IOException {
-        productList.clear();
+    public ArrayList<Product> loadProductsBySearchValue(String value) throws IOException {
 
         JSONArray productArray = getJsonArray();
         for (int i = 0; i < productArray.length(); i++) {
@@ -50,7 +49,8 @@ public class ProductService {
             String productDiscount = (String) productObject.get("discount");
             String productCost = (String) productObject.get("price");
             String productYear = (String) productObject.get("year");
-            if (productName.contains(value) || productType.contains(value)){
+            String capitalizedValue = value.substring(0, 1).toUpperCase() + value.substring(1);
+            if (productName.contains(value) || productName.contains(capitalizedValue) || productType.contains(capitalizedValue) || productType.contains(value)) {
                 Product newProduct = new Product(productName, productCapacity, productStyle, productDiscount, productType, productCost, productYear);
                 productList.add(newProduct);
             }

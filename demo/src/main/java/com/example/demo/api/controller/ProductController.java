@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @RestController
@@ -19,20 +18,17 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/products")
+    @GetMapping(value="/products")
     public ArrayList<Product> getProduct(){
         return productService.getProducts();
     }
 
     @GetMapping("/product")
+    @ResponseBody
     public ArrayList<Product> getProductsBySearchValue(@RequestParam String value) throws IOException {
-        return productService.getProductsBySearchValue(value);
+        return productService.loadProductsBySearchValue(value);
     }
 
-    @GetMapping("/get-text")
-    public String getText(){
-        return "hello-woprld";
-    }
 }
 
 
