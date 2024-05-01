@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.api.model.Order;
 import com.example.demo.api.model.Product;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 @Service
 public class ProductService {
 
+    private final String orderDatabasePath = "D:\\Wichtig\\IntellijWorkspace\\api\\demo\\src\\main\\resources\\orderDatabase.json";
     private final ArrayList<Product> productList;
 
     public ProductService() throws IOException, JSONException {
@@ -20,7 +23,7 @@ public class ProductService {
     }
 
     private void loadProducts() throws IOException, JSONException {
-        JSONArray productArray = getJsonArray();
+        JSONArray productArray = getJsonArray("D:\\Wichtig\\IntellijWorkspace\\api\\demo\\src\\main\\resources\\database.json");
 
         for (int i = 0; i < productArray.length(); i++) {
             JSONObject productObject = productArray.getJSONObject(i);
@@ -39,7 +42,7 @@ public class ProductService {
 
     public ArrayList<Product> loadProductsBySearchValue(String value) throws IOException {
 
-        JSONArray productArray = getJsonArray();
+        JSONArray productArray = getJsonArray("D:\\Wichtig\\IntellijWorkspace\\api\\demo\\src\\main\\resources\\database.json");
         for (int i = 0; i < productArray.length(); i++) {
             JSONObject productObject = productArray.getJSONObject(i);
             String productType = (String) productObject.get("type");
@@ -58,8 +61,8 @@ public class ProductService {
         return productList;
     }
 
-    private static JSONArray getJsonArray() throws IOException, JSONException {
-        File newFile = new File("D:\\Wichtig\\IntellijWorkspace\\api\\demo\\src\\main\\resources\\database.json");
+    private static JSONArray getJsonArray(String filename) throws IOException, JSONException {
+        File newFile = new File(filename);
 
         InputStream stream = new FileInputStream(newFile);
 
@@ -76,5 +79,25 @@ public class ProductService {
 
     public ArrayList<Product> getProducts() {
         return productList;
+    }
+
+    public void createOrder(Order newOrder) throws IOException, JSONException {
+        JSONArray orderArray = getJsonArray(orderDatabasePath);
+
+        PrintWriter pw = new PrintWriter(new FileOutputStream(orderDatabasePath));
+
+        final ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(newOrder);
+        JSONObject newOrderJSON = new JSONObject(json);
+        orderArray.put(newOrderJSON);
+        try {
+            pw.write(orderArray.toString());
+            pw.flush();
+            pw.close();
+
+            System.out.println("Successfully appended!");
+        } catch (JSONException ignored) {
+            System.out.println("Error!");
+        }
     }
 }

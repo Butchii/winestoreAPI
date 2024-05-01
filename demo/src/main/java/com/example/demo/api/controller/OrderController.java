@@ -5,9 +5,10 @@ import com.example.demo.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+
 
 public class OrderController {
 
@@ -16,8 +17,7 @@ public class OrderController {
     @Autowired
     public OrderController(OrderService orderService){this.orderService = orderService;}
 
-    @PostMapping(value="/createOrder")
-    @ResponseBody
+    @PostMapping("/createOrder/{newOrder}")
     public void createOrder(@RequestBody Order newOrder) throws IOException {
         orderService.createOrder(newOrder);
     }

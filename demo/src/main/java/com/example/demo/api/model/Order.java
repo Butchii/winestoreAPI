@@ -58,4 +58,12 @@ public class Order {
     public void setOrderedProducts(ArrayList<Product> orderedProducts) {
         this.orderedProducts = orderedProducts;
     }
+
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
 }
