@@ -14,7 +14,6 @@ import java.util.ArrayList;
 @Service
 public class ProductService {
 
-    private final String orderDatabasePath = "D:\\Wichtig\\IntellijWorkspace\\api\\demo\\src\\main\\resources\\orderDatabase.json";
     private final ArrayList<Product> productList;
 
     public ProductService() throws IOException, JSONException {
@@ -34,8 +33,9 @@ public class ProductService {
             String productType = (String) productObject.get("type");
             String productPrice = (String) productObject.get("price");
             String productYear = (String) productObject.get("year");
+            String productCategory = (String) productObject.get("category");
 
-            Product newProduct = new Product(productName, productCapacity, productStyle, productDiscount, productType, productPrice, productYear);
+            Product newProduct = new Product(productName, productCapacity, productStyle, productDiscount, productType, productPrice, productYear, productCategory);
             productList.add(newProduct);
         }
     }
@@ -52,9 +52,10 @@ public class ProductService {
             String productDiscount = (String) productObject.get("discount");
             String productCost = (String) productObject.get("price");
             String productYear = (String) productObject.get("year");
+            String productCategory = (String) productObject.get("category");
             String capitalizedValue = value.substring(0, 1).toUpperCase() + value.substring(1);
             if (productName.contains(value) || productName.contains(capitalizedValue) || productType.contains(capitalizedValue) || productType.contains(value)) {
-                Product newProduct = new Product(productName, productCapacity, productStyle, productDiscount, productType, productCost, productYear);
+                Product newProduct = new Product(productName, productCapacity, productStyle, productDiscount, productType, productCost, productYear, productCategory);
                 productList.add(newProduct);
             }
         }
@@ -82,6 +83,7 @@ public class ProductService {
     }
 
     public void createOrder(Order newOrder) throws IOException, JSONException {
+        String orderDatabasePath = "D:\\Wichtig\\IntellijWorkspace\\api\\demo\\src\\main\\resources\\orderDatabase.json";
         JSONArray orderArray = getJsonArray(orderDatabasePath);
 
         PrintWriter pw = new PrintWriter(new FileOutputStream(orderDatabasePath));
