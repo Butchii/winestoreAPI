@@ -1,3 +1,22 @@
 [
-
+  {
+    "orderID": "dddk2024-05-15T18:24:48.793269",
+    "shippingAddress": "5 dkdk dkd",
+    "shippedOn": "not shipped",
+    "createdOn": "2024-05-15T18:24:48.793269",
+    "customerName": "r d",
+    "orderedProducts": [
+      {
+        "year": "2021",
+        "price": "7.80",
+        "imageUrl": "default",
+        "name": "Dagernova CasAHRnova Rotwein Qualitaetswein trocken 2021",
+        "discount": "1",
+        "style": "trocken",
+        "type": "Rotwein",
+        "category": "wine",
+        "capacity": "0.75"
+      }
+    ]
+  }
 ]

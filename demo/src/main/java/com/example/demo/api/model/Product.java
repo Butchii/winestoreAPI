@@ -11,7 +11,7 @@ public class Product {
     private String imageUrl;
     private String category;
 
-    public Product(String name, String capacity, String style, String discount, String type, String price, String year, String category) {
+    public Product(String name, String capacity, String imageUrl, String style, String discount, String type, String price, String year, String category) {
         this.name = name;
         this.capacity = capacity;
         this.style = style;
@@ -19,7 +19,7 @@ public class Product {
         this.type = type;
         this.price = price;
         this.year = year;
-        this.imageUrl = "default";
+        this.imageUrl = imageUrl;
         this.category = category;
     }
 
