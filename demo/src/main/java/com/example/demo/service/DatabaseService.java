@@ -13,10 +13,15 @@ import java.util.ArrayList;
 
 @Service
 public class DatabaseService {
-
     private final ArrayList<Product> productList;
     private final ArrayList<Order> orderList;
+    private final String productDatabasePath;
+    private final String orderDatabasePath;
+
     public DatabaseService() throws IOException, JSONException {
+        productDatabasePath = "D:\\Wichtig\\IntellijWorkspace\\api\\demo\\src\\main\\resources\\database.json";
+        orderDatabasePath = "D:\\Wichtig\\IntellijWorkspace\\api\\demo\\src\\main\\resources\\orderDatabase.json";
+
         productList = new ArrayList<>();
         loadProducts();
 
@@ -25,19 +30,19 @@ public class DatabaseService {
     }
 
     private void loadProducts() throws IOException, JSONException {
-        JSONArray productArray = getJsonArray("D:\\Wichtig\\IntellijWorkspace\\api\\demo\\src\\main\\resources\\database.json");
+        JSONArray productArray = getJsonArray(productDatabasePath);
 
         for (int i = 0; i < productArray.length(); i++) {
             JSONObject productObject = productArray.getJSONObject(i);
-            String productName = (String) productObject.get("name");
-            String productCapacity = (String) productObject.get("capacity");
-            String productImageUrl = (String) productObject.get("imageUrl");
-            String productStyle = (String) productObject.get("style");
-            String productDiscount = (String) productObject.get("discount");
-            String productType = (String) productObject.get("type");
-            String productPrice = (String) productObject.get("price");
-            String productYear = (String) productObject.get("year");
-            String productCategory = (String) productObject.get("category");
+            String productName = productObject.getString("name");
+            String productCapacity = productObject.getString("capacity");
+            String productImageUrl = productObject.getString("imageUrl");
+            String productStyle = productObject.getString("style");
+            String productDiscount = productObject.getString("discount");
+            String productType = productObject.getString("type");
+            String productPrice = productObject.getString("price");
+            String productYear = productObject.getString("year");
+            String productCategory = productObject.getString("category");
 
             Product newProduct = new Product(productName, productCapacity, productImageUrl, productStyle, productDiscount, productType, productPrice, productYear, productCategory);
             productList.add(newProduct);
@@ -45,7 +50,7 @@ public class DatabaseService {
     }
 
     public ArrayList<Product> loadProductsBySearchValue(String value) throws IOException {
-        JSONArray productArray = getJsonArray("D:\\Wichtig\\IntellijWorkspace\\api\\demo\\src\\main\\resources\\database.json");
+        JSONArray productArray = getJsonArray(productDatabasePath);
         for (int i = 0; i < productArray.length(); i++) {
             JSONObject productObject = productArray.getJSONObject(i);
             String productType = (String) productObject.get("type");
@@ -86,17 +91,18 @@ public class DatabaseService {
         return productList;
     }
 
-    public ArrayList<Order> getOrders(){
+    public ArrayList<Order> getOrders() {
         return orderList;
     }
 
     public void createOrder(Order newOrder) throws IOException, JSONException {
-        File orderDatabase = new File("D:\\Wichtig\\IntellijWorkspace\\api\\demo\\src\\main\\resources\\orderDatabase.json");
+        File orderDatabase = new File(orderDatabasePath);
+        JSONArray orderDatabaseArray = getJsonArray(orderDatabasePath);
 
         if (!orderDatabase.exists()) {
             orderDatabase.createNewFile();
+            orderDatabaseArray = new JSONArray(orderDatabase);
         }
-        JSONArray orderDatabaseArray = new JSONArray(orderDatabase);
 
         ObjectMapper mapper = new ObjectMapper();
         String newOrderString = mapper.writeValueAsString(newOrder);
@@ -115,7 +121,7 @@ public class DatabaseService {
     }
 
     public void loadOrders() throws IOException, JSONException {
-        JSONArray orderArray = getJsonArray("D:\\Wichtig\\IntellijWorkspace\\api\\demo\\src\\main\\resources\\orderDatabase.json");
+        JSONArray orderArray = getJsonArray(orderDatabasePath);
 
         for (int i = 0; i < orderArray.length(); i++) {
             JSONObject orderObject = orderArray.getJSONObject(i);

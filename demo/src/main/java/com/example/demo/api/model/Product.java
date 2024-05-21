@@ -19,7 +19,7 @@ public class Product {
         this.type = type;
         this.price = price;
         this.year = year;
-        this.imageUrl = imageUrl;
+        this.imageUrl = name + capacity + style + year;
         this.category = category;
     }
 

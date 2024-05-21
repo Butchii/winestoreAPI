@@ -3,16 +3,20 @@ package com.example.demo.api.controller;
 import com.example.demo.api.model.Order;
 import com.example.demo.api.model.Product;
 import com.example.demo.service.DatabaseService;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 @RestController
 public class DatabaseController {
 
     private final DatabaseService databaseService;
+
     @Autowired
     public DatabaseController(DatabaseService databaseService) {
         this.databaseService = databaseService;
@@ -31,8 +35,20 @@ public class DatabaseController {
 
     @GetMapping("/orders")
     @ResponseBody
-    public ArrayList<Order> getOrders(){
+    public ArrayList<Order> getOrders() {
         return databaseService.getOrders();
+    }
+
+    @PostMapping("/createOrder/{newOrder}")
+    public void createOrder(@RequestBody Order newOrder) throws IOException {
+        databaseService.createOrder(newOrder);
+    }
+
+    @GetMapping(value = "/image", produces = MediaType.IMAGE_JPEG_VALUE)
+    public @ResponseBody byte[] getProductImage() throws IOException {
+        InputStream in = getClass().getResourceAsStream("/casahrnova_75.png");
+        assert in != null;
+        return org.apache.commons.io.IOUtils.toByteArray(in);
     }
 }
 
