@@ -51,6 +51,7 @@ public class DatabaseService {
 
     public ArrayList<Product> loadProductsBySearchValue(String value) throws IOException {
         JSONArray productArray = getJsonArray(productDatabasePath);
+        ArrayList<Product> customProductList = new ArrayList<>();
         for (int i = 0; i < productArray.length(); i++) {
             JSONObject productObject = productArray.getJSONObject(i);
             String productType = (String) productObject.get("type");
@@ -62,13 +63,20 @@ public class DatabaseService {
             String productCost = (String) productObject.get("price");
             String productYear = (String) productObject.get("year");
             String productCategory = (String) productObject.get("category");
-            String capitalizedValue = value.substring(0, 1).toUpperCase() + value.substring(1);
+
+            String capitalizedValue;
+            if (value.length() > 1) {
+                capitalizedValue = value.substring(0, 1).toUpperCase() + value.substring(1);
+            } else {
+                capitalizedValue = value.substring(0, 1).toUpperCase();
+            }
+
             if (productName.contains(value) || productName.contains(capitalizedValue) || productType.contains(capitalizedValue) || productType.contains(value)) {
                 Product newProduct = new Product(productName, productCapacity, productImageUrl, productStyle, productDiscount, productType, productCost, productYear, productCategory);
-                productList.add(newProduct);
+                customProductList.add(newProduct);
             }
         }
-        return productList;
+        return customProductList;
     }
 
     private static JSONArray getJsonArray(String filename) throws IOException, JSONException {
@@ -118,6 +126,7 @@ public class DatabaseService {
         } catch (JSONException ignored) {
             System.out.println("Error!");
         }
+        orderList.add(newOrder);
     }
 
     public void loadOrders() throws IOException, JSONException {

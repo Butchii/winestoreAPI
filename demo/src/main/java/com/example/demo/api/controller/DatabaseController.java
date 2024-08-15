@@ -3,9 +3,7 @@ package com.example.demo.api.controller;
 import com.example.demo.api.model.Order;
 import com.example.demo.api.model.Product;
 import com.example.demo.service.DatabaseService;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -44,9 +42,10 @@ public class DatabaseController {
         databaseService.createOrder(newOrder);
     }
 
-    @GetMapping(value = "/image", produces = MediaType.IMAGE_JPEG_VALUE)
-    public @ResponseBody byte[] getProductImage() throws IOException {
-        InputStream in = getClass().getResourceAsStream("/casahrnova_75.png");
+    @GetMapping("/getProductImage")
+    @ResponseBody
+    public byte[] getProductImage(@RequestParam String imageURL) throws IOException {
+        InputStream in = getClass().getResourceAsStream(imageURL);
         assert in != null;
         return org.apache.commons.io.IOUtils.toByteArray(in);
     }

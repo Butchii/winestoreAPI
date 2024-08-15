@@ -7,29 +7,29 @@
     "discount": "1",
     "price": "7.80",
     "year": "2021",
-    "imageUrl": "default",
+    "imageUrl": "/casahrnova_75.png",
     "category": "wine"
   },
   {
-    "name": "Handschrift Spaetburgunder Blanc de Noir  trocken 2022",
+    "name": "Handschrift Spaetburgunder Blanc de Noir  trocken 2023",
     "capacity": "0.75",
     "type": "Weisswein",
     "style": "trocken",
     "discount": "1",
     "price": "8.80",
-    "year": "2022",
-    "imageUrl": "default",
+    "year": "2023",
+    "imageUrl": "/hs_blanc_75_tro.png",
     "category": "wine"
   },
   {
-    "name": "Dagernova Rivaner Qualitaetswein feinherb Basis feinherb 2022",
+    "name": "Dagernova Rivaner Qualitaetswein feinherb Basis feinherb 2023",
     "capacity": "0.75",
     "type": "Weisswein",
     "style": "trocken",
     "discount": "0.8",
     "price": "6.90",
-    "year": "2022",
-    "imageUrl": "default",
+    "year": "2023",
+    "imageUrl": "/rivaner_75_fein.png",
     "category": "wine"
   },
   {
@@ -40,7 +40,7 @@
     "discount": "1",
     "price": "7.80",
     "year": "2022",
-    "imageUrl": "default",
+    "imageUrl": "/blanc_75_fein.png",
     "category": "wine"
   },
   {
@@ -51,7 +51,7 @@
     "discount": "1",
     "price": "7.80",
     "year": "2022",
-    "imageUrl": "default",
+    "imageUrl": "/portugieser_75_tro.png",
     "category": "wine"
   },
   {
@@ -62,7 +62,7 @@
     "discount": "1",
     "price": "9.20",
     "year": "2021",
-    "imageUrl": "default",
+    "imageUrl": "/domina_75_halbtro.png",
     "category": "wine"
   },
   {
@@ -73,18 +73,18 @@
     "discount": "1",
     "price": "12.20",
     "year": "2021",
-    "imageUrl": "default",
+    "imageUrl": "/blancsekt_75_brut.png",
     "category": "sekt"
   },
   {
     "name": "Dagernova Rose Sekt Basis Trocken",
-    "capacity": "0.75",
+    "capacity": "0.2",
     "type": "sekt",
     "style": "trocken",
     "discount": "1",
     "price": "8.20",
     "year": "2021",
-    "imageUrl": "default",
+    "imageUrl": "/rosesekt_02_tro.png",
     "category": "sekt"
   },
   {
@@ -95,7 +95,7 @@
     "discount": "1",
     "price": "3.20",
     "year": "2021",
-    "imageUrl": "default",
+    "imageUrl": "/rotsekt_02_tro.png",
     "category": "sekt"
   },
   {
@@ -106,7 +106,7 @@
     "discount": "1",
     "price": "78",
     "year": "2021",
-    "imageUrl": "default",
+    "imageUrl": "/rose_aktion_fein.png",
     "category": "package"
   },
   {
@@ -117,18 +117,7 @@
     "discount": "1",
     "price": "78",
     "year": "2021",
-    "imageUrl": "default",
-    "category": "package"
-  },
-  {
-    "name": "Exklusiver Weinzauber",
-    "capacity": "4.5",
-    "type": "gemischt",
-    "style": "gemischt",
-    "discount": "1",
-    "price": "84.90",
-    "year": "2021",
-    "imageUrl": "default",
+    "imageUrl": "/rose_aktion_tro.png",
     "category": "package"
   },
   {
@@ -139,7 +128,7 @@
     "discount": "1",
     "price": "35.90",
     "year": "2021",
-    "imageUrl": "default",
+    "imageUrl": "/riesling_box.png",
     "category": "present"
   }
 
