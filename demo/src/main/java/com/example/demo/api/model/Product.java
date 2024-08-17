@@ -1,7 +1,7 @@
 package com.example.demo.api.model;
 
 public class Product {
-    private String name;
+    private final String name;
     private String capacity;
     private String type;
     private String style;

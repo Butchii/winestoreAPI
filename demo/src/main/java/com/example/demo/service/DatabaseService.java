@@ -155,7 +155,7 @@ public class DatabaseService {
                 String productCategory = (String) product.get("category");
                 String productCapacity = (String) product.get("capacity");
 
-                Product newProduct = new Product(productYear, productPrice, productImageUrl, productName, productDiscount, productStyle, productType, productCategory, productCapacity);
+                Product newProduct = new Product(productName, productCapacity, productType, productStyle, productDiscount, productPrice, productYear, productImageUrl, productCategory);
                 orderProductsList.add(newProduct);
             }
             Order newOrder = new Order(orderId, orderCreatedOn, orderShippedOn, orderAddress, orderCustomerName, orderProductsList);
