@@ -139,6 +139,8 @@ public class DatabaseService {
             String orderShippedOn = (String) orderObject.get("shippedOn");
             String orderCreatedOn = (String) orderObject.get("createdOn");
             String orderCustomerName = (String) orderObject.get("customerName");
+            String orderCustomerPhone = (String) orderObject.get("customerPhone");
+            String orderCustomerMail = (String) orderObject.get("customerMail");
 
             JSONArray orderProducts = orderObject.getJSONArray("orderedProducts");
             ArrayList<Product> orderProductsList = new ArrayList<>();
@@ -158,7 +160,7 @@ public class DatabaseService {
                 Product newProduct = new Product(productName, productCapacity, productType, productStyle, productDiscount, productPrice, productYear, productImageUrl, productCategory);
                 orderProductsList.add(newProduct);
             }
-            Order newOrder = new Order(orderId, orderCreatedOn, orderShippedOn, orderAddress, orderCustomerName, orderProductsList);
+            Order newOrder = new Order(orderId, orderCreatedOn, orderShippedOn, orderAddress, orderCustomerName, orderCustomerPhone, orderCustomerMail, orderProductsList);
             orderList.add(newOrder);
         }
     }
