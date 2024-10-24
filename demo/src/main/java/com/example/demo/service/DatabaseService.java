@@ -49,6 +49,44 @@ public class DatabaseService {
         }
     }
 
+    public Order getOrderById(String id) throws IOException {
+        JSONArray orderArray = getJsonArray(orderDatabasePath);
+        Order order = null;
+        for (int i = 0; i < orderArray.length(); i++){
+            JSONObject orderObject = orderArray.getJSONObject(i);
+            if(orderObject.get("orderID").equals(id)){
+                String orderId = (String) orderObject.get("orderID");
+                String orderAddress = (String) orderObject.get("shippingAddress");
+                String orderShippedOn = (String) orderObject.get("shippedOn");
+                String orderCreatedOn = (String) orderObject.get("createdOn");
+                String orderCustomerName = (String) orderObject.get("customerName");
+                String orderCustomerPhone = (String) orderObject.get("customerPhone");
+                String orderCustomerMail = (String) orderObject.get("customerMail");
+                JSONArray orderProducts = orderObject.getJSONArray("orderedProducts");
+                ArrayList<Product> orderProductsList = new ArrayList<>();
+
+                for (int j = 0; j < orderProducts.length(); j++) {
+                    JSONObject product = orderProducts.getJSONObject(j);
+                    String productYear = (String) product.get("year");
+                    String productPrice = (String) product.get("price");
+                    String productImageUrl = (String) product.get("imageUrl");
+                    String productName = (String) product.get("name");
+                    String productDiscount = (String) product.get("discount");
+                    String productStyle = (String) product.get("style");
+                    String productType = (String) product.get("type");
+                    String productCategory = (String) product.get("category");
+                    String productCapacity = (String) product.get("capacity");
+
+                    Product newProduct = new Product(productName, productCapacity, productType, productStyle, productDiscount, productPrice, productYear, productImageUrl, productCategory);
+                    orderProductsList.add(newProduct);
+                }
+                order = new Order(orderId, orderCreatedOn, orderShippedOn, orderAddress, orderCustomerName, orderCustomerPhone, orderCustomerMail, orderProductsList);
+                break;
+            }
+        }
+        return order;
+    }
+
     public ArrayList<Product> loadProductsBySearchValue(String value) throws IOException {
         JSONArray productArray = getJsonArray(productDatabasePath);
         ArrayList<Product> customProductList = new ArrayList<>();

@@ -1,5 +1,6 @@
 [
   {
+    "id" : "1",
     "name": "Dagernova CasAHRnova Rotwein Qualitaetswein trocken 2021",
     "capacity": "0.75",
     "type": "Rotwein",
@@ -11,6 +12,7 @@
     "category": "wine"
   },
   {
+    "id" : "2",
     "name": "Handschrift Spaetburgunder Blanc de Noir  trocken 2023",
     "capacity": "0.75",
     "type": "Weisswein",
@@ -22,6 +24,7 @@
     "category": "wine"
   },
   {
+    "id" : "3",
     "name": "Dagernova Rivaner Qualitaetswein feinherb Basis feinherb 2023",
     "capacity": "0.75",
     "type": "Weisswein",
@@ -33,6 +36,7 @@
     "category": "wine"
   },
   {
+    "id" : "4",
     "name": "Dagernova Blanc de Noir Qualitaetswein feinherb 2022",
     "capacity": "0.75",
     "type": "Weisswein",
@@ -44,6 +48,7 @@
     "category": "wine"
   },
   {
+    "id" : "5",
     "name": "Dagernova Portugieser Qualitaetswein Basis trocken 2022",
     "capacity": "0.75",
     "type": "Rotwein",
@@ -55,6 +60,7 @@
     "category": "wine"
   },
   {
+    "id" : "6",
     "name": "Handschrift Domina Qualitaetswein halbtrocken 2021",
     "capacity": "0.75",
     "type": "Rotwein",
@@ -66,6 +72,7 @@
     "category": "wine"
   },
   {
+    "id" : "7",
     "name": "Spaetburgunder Blanc de Noir Sekt Handschrift Brut 2021",
     "capacity": "0.75",
     "type": "sekt",
@@ -77,6 +84,7 @@
     "category": "sekt"
   },
   {
+    "id" : "8",
     "name": "Dagernova Rose Sekt Basis Trocken",
     "capacity": "0.2",
     "type": "sekt",
@@ -88,6 +96,7 @@
     "category": "sekt"
   },
   {
+    "id" : "9",
     "name": "Dagernova Rotsekt Basis Trocken",
     "capacity": "0.2",
     "type": "sekt",
@@ -99,6 +108,7 @@
     "category": "sekt"
   },
   {
+    "id" : "10",
     "name" : "10 + 2 AKTION Dagernova Spaetburgunder Rose Qualitaetswein feinherb",
     "capacity": "9",
     "type": "Weisswein",
@@ -110,6 +120,7 @@
     "category": "package"
   },
   {
+    "id" : "11",
     "name": "10 + 2 AKTION Dagernova Spaetburgunder Rose Qualitaetswein trocken",
     "capacity": "9",
     "type": "Weisswein",
@@ -121,6 +132,7 @@
     "category": "package"
   },
   {
+    "id" : "12",
     "name": "Riesling Box",
     "capacity": "3",
     "type": "Weisswein",
@@ -131,5 +143,4 @@
     "imageUrl": "/riesling_box.png",
     "category": "present"
   }
-
 ]

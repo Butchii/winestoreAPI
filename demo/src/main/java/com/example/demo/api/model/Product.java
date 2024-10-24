@@ -2,14 +2,14 @@ package com.example.demo.api.model;
 
 public class Product {
     private final String name;
-    private String capacity;
-    private String type;
-    private String style;
+    private final String capacity;
+    private final String type;
+    private final String style;
     private String discount;
     private String price;
-    private String year;
-    private String imageUrl;
-    private String category;
+    private final String year;
+    private final String imageUrl;
+    private final String category;
 
     public Product(String name, String capacity, String imageUrl, String style, String discount, String type, String price, String year, String category) {
         this.name = name;
@@ -39,7 +39,7 @@ public class Product {
         return price;
     }
 
-    public void setPrice(String cost) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 @RestController
 public class DatabaseController {
-
     private final DatabaseService databaseService;
 
     @Autowired
@@ -31,6 +30,7 @@ public class DatabaseController {
         return databaseService.loadProductsBySearchValue(value);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/orders")
     @ResponseBody
     public ArrayList<Order> getOrders() {
@@ -48,6 +48,12 @@ public class DatabaseController {
         InputStream in = getClass().getResourceAsStream(imageURL);
         assert in != null;
         return org.apache.commons.io.IOUtils.toByteArray(in);
+    }
+
+    @GetMapping("/getOrderById")
+    @ResponseBody
+    public Order getOrderById(@RequestParam String id) throws IOException{
+        return databaseService.getOrderById(id);
     }
 }
 
