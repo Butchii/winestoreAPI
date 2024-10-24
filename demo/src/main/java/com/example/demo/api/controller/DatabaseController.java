@@ -50,10 +50,10 @@ public class DatabaseController {
         return org.apache.commons.io.IOUtils.toByteArray(in);
     }
 
-    @GetMapping("/getOrderById")
+    @GetMapping("/setOrderToShipped")
     @ResponseBody
-    public Order getOrderById(@RequestParam String id) throws IOException{
-        return databaseService.getOrderById(id);
+    public void setOrderToShipped(@RequestParam String id) throws IOException {
+        databaseService.setOrderToShipped(id);
     }
 }
 

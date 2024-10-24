@@ -52,9 +52,9 @@ public class DatabaseService {
     public Order getOrderById(String id) throws IOException {
         JSONArray orderArray = getJsonArray(orderDatabasePath);
         Order order = null;
-        for (int i = 0; i < orderArray.length(); i++){
+        for (int i = 0; i < orderArray.length(); i++) {
             JSONObject orderObject = orderArray.getJSONObject(i);
-            if(orderObject.get("orderID").equals(id)){
+            if (orderObject.get("orderID").equals(id)) {
                 String orderId = (String) orderObject.get("orderID");
                 String orderAddress = (String) orderObject.get("shippingAddress");
                 String orderShippedOn = (String) orderObject.get("shippedOn");
@@ -85,6 +85,30 @@ public class DatabaseService {
             }
         }
         return order;
+    }
+
+    public void setOrderToShipped(String id) throws IOException {
+        File orderDatabase = new File(orderDatabasePath);
+        JSONArray orderArray = getJsonArray(orderDatabasePath);
+
+
+        for (int i = 0; i < orderArray.length(); i++) {
+            JSONObject orderObject = orderArray.getJSONObject(i);
+            if (orderObject.get("orderID").equals(id)) {
+                orderObject.put("shippedOn", "01.01.2005");
+                break;
+            }
+        }
+        try {
+            FileWriter file = new FileWriter(orderDatabase);
+            file.write(orderArray.toString());
+            file.flush();
+            file.close();
+            System.out.println("Changed order status to shipped!");
+
+        } catch (JSONException ignored) {
+            System.out.println("Error!");
+        }
     }
 
     public ArrayList<Product> loadProductsBySearchValue(String value) throws IOException {
