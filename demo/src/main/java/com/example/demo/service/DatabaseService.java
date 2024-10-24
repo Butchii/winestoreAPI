@@ -9,7 +9,10 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Service
 public class DatabaseService {
@@ -88,6 +91,7 @@ public class DatabaseService {
     }
 
     public void setOrderToShipped(String id) throws IOException {
+        String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
         File orderDatabase = new File(orderDatabasePath);
         JSONArray orderArray = getJsonArray(orderDatabasePath);
 
@@ -95,7 +99,7 @@ public class DatabaseService {
         for (int i = 0; i < orderArray.length(); i++) {
             JSONObject orderObject = orderArray.getJSONObject(i);
             if (orderObject.get("orderID").equals(id)) {
-                orderObject.put("shippedOn", "01.01.2005");
+                orderObject.put("shippedOn", date);
                 break;
             }
         }
@@ -108,6 +112,12 @@ public class DatabaseService {
 
         } catch (JSONException ignored) {
             System.out.println("Error!");
+        }
+
+        for(Order order :orderList){
+            if (order.getOrderID().equals(id)){
+                order.setShippedOn(date);
+            }
         }
     }
 
@@ -225,5 +235,11 @@ public class DatabaseService {
             Order newOrder = new Order(orderId, orderCreatedOn, orderShippedOn, orderAddress, orderCustomerName, orderCustomerPhone, orderCustomerMail, orderProductsList);
             orderList.add(newOrder);
         }
+
+
+        //public void changeProductPrice(String productId){
+
     }
 }
+
+
