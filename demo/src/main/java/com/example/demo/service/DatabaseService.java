@@ -238,7 +238,7 @@ public class DatabaseService {
 
 
         //public void changeProductPrice(String productId){
-
+        //public void applyDiscount(String productId){
     }
 }
 

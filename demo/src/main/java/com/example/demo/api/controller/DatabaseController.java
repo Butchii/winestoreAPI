@@ -50,11 +50,17 @@ public class DatabaseController {
         return org.apache.commons.io.IOUtils.toByteArray(in);
     }
 
-    @GetMapping("/setOrderToShipped")
+    @PatchMapping("/setOrderToShipped")
     @ResponseBody
     public void setOrderToShipped(@RequestParam String id) throws IOException {
         databaseService.setOrderToShipped(id);
     }
+
+    /*
+    @PatchMapping("/applyDiscount")
+    public void applyDiscount(@RequestParam String productId) throws IOException{
+      databaseService.applyDiscount(productId);
+     */
 }
 
 
